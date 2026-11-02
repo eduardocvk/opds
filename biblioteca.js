@@ -22,7 +22,7 @@ async function loadCatalog() { const json = await request(api + '?t=' + Date.now
 async function writeCatalog(doc, sha, message) {
     if (!githubToken) throw Error('Conecta GitHub antes de modificar el catálogo.');
     const updated = child(doc.documentElement, 'updated'); if (updated) updated.textContent = new Date().toISOString();
-    const xml = new XMLSerializer().serializeToString(doc);
+    const xml = new XMLSerializer().serializeToString(doc.documentElement);
     const response = await request(api, {method:'PUT',headers:{...ghHeaders(),'Content-Type':'application/json'},body:JSON.stringify({message,sha,content:encode64('<?xml version="1.0" encoding="UTF-8"?>\n' + xml)})});
     catalog = {sha:response.content.sha, doc}; render();
 }
