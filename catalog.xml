@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:21:01Z</updated>
+<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:21:06Z</updated>
 <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://eduardocvk.github.io/opds/catalog.xml"/>
 <entry><id>urn:drive:1eyi9VDvwtatdwIE337Bivk2X4dDSglPT</id><title>Ayuso. Zancadillas, intrigas y venganzas en la Corte de Madrid</title><updated>2026-11-02T17:57:55Z</updated><author><name>David Fernández</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1eyi9VDvwtatdwIE337Bivk2X4dDSglPT&amp;export=download" length="6031800"/></entry>
 <entry><id>urn:drive:1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o</id><title>Bucle</title><updated>2026-11-02T18:25:02Z</updated><author><name>Pereda Herrera, Marcos</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o&amp;export=download" length="1274953"/></entry>
@@ -21,4 +21,5 @@
 <entry><id>urn:drive:1Lw8c7ltTNdBFsdprvfeS-Aypz2hM0WTu</id><title>Eva</title><updated>2026-11-02T19:20:50Z</updated><author><name>Cat Bohannon</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1Lw8c7ltTNdBFsdprvfeS-Aypz2hM0WTu&amp;export=download" length="7700111"/></entry>
 <entry><id>urn:drive:1wBYk3JgBdYiF0sgrwEsLg9EiHxdnAIur</id><title>Fuego en la garganta</title><updated>2026-11-02T19:20:55Z</updated><author><name>Beatriz Serrano</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1wBYk3JgBdYiF0sgrwEsLg9EiHxdnAIur&amp;export=download" length="1335689"/></entry>
 <entry><id>urn:drive:1I6jBJZrVSCZJ_NwKFi9iythvIQZkJhR_</id><title>Igual que ayer</title><updated>2026-11-02T19:21:00Z</updated><author><name>Eduard Palomares</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1I6jBJZrVSCZJ_NwKFi9iythvIQZkJhR_&amp;export=download" length="683090"/></entry>
+<entry><id>urn:drive:1V7c4gSXHKq0vOqiiKkNLGRUYH_JVhc4N</id><title>Koljós</title><updated>2026-11-02T19:21:05Z</updated><author><name>Emmanuel Carrère</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1V7c4gSXHKq0vOqiiKkNLGRUYH_JVhc4N&amp;export=download" length="825392"/></entry>
 </feed>
