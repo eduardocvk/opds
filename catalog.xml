@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>urn:opds:cloud-library</id>
+  <title>Mi biblioteca</title>
+  <updated>2026-11-02T00:00:00Z</updated>
+  <link rel="self" href="https://eduardocvk.github.io/opds/catalog.xml" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+</feed>
