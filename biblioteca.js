@@ -4,8 +4,45 @@ const api = 'https://api.github.com/repos/eduardocvk/opds/contents/catalog.xml';
 const catalogUrl = 'https://eduardocvk.github.io/opds/catalog.xml';
 const atom = 'http://www.w3.org/2005/Atom';
 const acquire = 'http://opds-spec.org/acquisition';
-let githubToken = '', driveToken = '', catalog = null, busy = false, editingId = null;
+let githubToken = '', driveToken = '', driveExpiresAt = 0, catalog = null, busy = false, editingId = null;
 const selectedIds = new Set();
+let credentialsRevision = 0;
+// La clave no exportable y el token cifrado permanecen en el almacenamiento de este navegador.
+function secretDb() {
+    return new Promise((resolve,reject) => {
+        const request=indexedDB.open('opds-credentials',1);
+        request.onupgradeneeded=()=>request.result.createObjectStore('secrets');
+        request.onerror=()=>reject(request.error);
+        request.onsuccess=()=>resolve(request.result);
+    });
+}
+async function secretGet(name) {
+    const db=await secretDb();
+    try { return await new Promise((resolve,reject)=>{const tx=db.transaction('secrets','readonly'),request=tx.objectStore('secrets').get(name);request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);}); }
+    finally { db.close(); }
+}
+async function secretPut(name,value) {
+    const db=await secretDb();
+    try { await new Promise((resolve,reject)=>{const tx=db.transaction('secrets','readwrite');tx.objectStore('secrets').put(value,name);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('Operación cancelada'));}); }
+    finally { db.close(); }
+}
+async function secretDelete(name) {
+    const db=await secretDb();
+    try { await new Promise((resolve,reject)=>{const tx=db.transaction('secrets','readwrite');tx.objectStore('secrets').delete(name);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||Error('Operación cancelada'));}); }
+    finally { db.close(); }
+}
+async function saveGithubToken(token) {
+    let key=await secretGet('key');
+    if(!key) {key=await crypto.subtle.generateKey({name:'AES-GCM',length:256},false,['encrypt','decrypt']);await secretPut('key',key);}
+    const iv=crypto.getRandomValues(new Uint8Array(12));
+    const ciphertext=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(token));
+    await secretPut('github',{iv,ciphertext});
+}
+async function loadGithubToken() {
+    const data=await secretGet('github'); if(!data)return '';
+    const key=await secretGet('key'); if(!key)throw Error('Falta la clave del navegador');
+    return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:data.iv},key,data.ciphertext));
+}
 $('googleClient').value = localStorage.getItem('opds_google_client') || '978947597673-8s75d96r8boafnvjnnpvr7d8am08m6ll.apps.googleusercontent.com';
 function notice(text, error = false) { const n = $('notice'); n.textContent = text; n.classList.toggle('error', error); n.hidden = !text; }
 function connected() { $('githubButton').classList.toggle('connected', !!githubToken); $('googleButton').classList.toggle('connected', !!driveToken); }
@@ -65,10 +102,42 @@ $('selectAll').onchange=()=>{if(!catalog)return;for(const b of visibleBooks()) {
 $('sort').onchange=render;
 document.querySelectorAll('.sort-heading').forEach(button=>button.onclick=()=>{const field=button.dataset.sort; const current=$('sort').value; $('sort').value=field+'-'+(current===field+'-asc'?'desc':'asc');render();});
 function requireGithub() { if (githubToken) return true; notice('Introduce tu token de GitHub para modificar el catálogo.',true); $('credentials').showModal(); return false; }
-function requireDrive() { if (driveToken) return true; notice('Conecta Google Drive antes de subir o eliminar archivos.',true); return false; }
+function requireDrive() { if (driveToken && Date.now()<driveExpiresAt) return true; driveToken=''; connected(); notice('Pulsa Google Drive para conectar o renovar el acceso.',true); return false; }
 $('githubButton').onclick=() => $('credentials').showModal();
-$('saveCredentials').onclick = event => { event.preventDefault(); githubToken = $('githubToken').value.trim(); const id = $('googleClient').value.trim(); if (id && !/^[a-zA-Z0-9-]+\.apps\.googleusercontent\.com$/.test(id)) { notice('El ID de cliente de Google no tiene el formato esperado.',true); return; } if(id) localStorage.setItem('opds_google_client',id); else localStorage.removeItem('opds_google_client'); $('credentials').close(); connected(); notice(githubToken ? 'Token de GitHub disponible en esta pestaña.' : 'Introduce el token de GitHub para realizar cambios.'); };
-$('googleButton').onclick=() => { const clientId = $('googleClient').value.trim(); if (!clientId) { notice('Introduce primero el ID del cliente web de Google.',true); $('credentials').showModal(); return; } if (!window.google?.accounts?.oauth2) { notice('No se pudo cargar la conexión de Google. Recarga la página.',true); return; } try { google.accounts.oauth2.initTokenClient({client_id:clientId,scope:'https://www.googleapis.com/auth/drive.file',callback:r => { if (r.error) { notice('Google no autorizó el acceso: ' + r.error,true); return; } driveToken=r.access_token; connected(); notice('Google Drive conectado.'); },error_callback:() => notice('No se completó la conexión con Google Drive.',true)}).requestAccessToken({prompt:'consent'}); } catch (e) { notice(e.message,true); } };
+$('saveCredentials').onclick = async event => {
+    event.preventDefault();
+    const token=$('githubToken').value.trim(),id=$('googleClient').value.trim();
+    credentialsRevision++;
+    if(id && !/^[a-zA-Z0-9-]+\.apps\.googleusercontent\.com$/.test(id)) {notice('El ID de cliente de Google no tiene el formato esperado.',true);return;}
+    try {
+        if(!token && (githubToken || await secretGet('github'))) {notice('Para borrar el token guardado, pulsa Olvidar token.',true);return;}
+        if(token) { await saveGithubToken(token); githubToken=token; }
+        if(id) localStorage.setItem('opds_google_client',id); else localStorage.removeItem('opds_google_client');
+        $('credentials').close();connected();notice(token ? 'Token guardado en este navegador.' : 'No hay ningún token de GitHub guardado.');
+    } catch(e) {notice('No se pudo guardar el token en este navegador: '+(e.message||'almacenamiento no disponible'),true);}
+};
+$('forgetGithub').onclick = async () => {
+    credentialsRevision++;
+    try {await secretDelete('github'); githubToken=''; $('githubToken').value=''; connected(); $('credentials').close(); notice('Token de GitHub eliminado de este navegador.');}
+    catch(e) {notice('No se pudo eliminar el token: '+e.message,true);}
+};
+$('googleButton').onclick=() => {
+    const clientId=$('googleClient').value.trim();
+    if(!clientId) {notice('Introduce primero el ID del cliente web de Google.',true);$('credentials').showModal();return;}
+    if(!window.google?.accounts?.oauth2) {notice('No se pudo cargar la conexión de Google. Recarga la página.',true);return;}
+    try {
+        google.accounts.oauth2.initTokenClient({client_id:clientId,scope:'https://www.googleapis.com/auth/drive.file',callback:r=>{
+            if(r.error){notice('Google no autorizó el acceso: '+r.error,true);return;}
+            driveToken=r.access_token;driveExpiresAt=Date.now()+Math.max(0,Number(r.expires_in||3600)-30)*1000;
+            connected();notice('Google Drive conectado.');
+            const token=driveToken;setTimeout(()=>{if(driveToken===token&&Date.now()>=driveExpiresAt){driveToken='';connected();}},Math.max(0,driveExpiresAt-Date.now()));
+        },error_callback:()=>notice('No se completó la conexión con Google Drive.',true)}).requestAccessToken({prompt:''});
+    } catch(e) {notice(e.message,true);}
+};
+const startupCredentialsRevision=credentialsRevision;
+loadGithubToken().then(token=>{
+    if(credentialsRevision===startupCredentialsRevision && token && !githubToken && !$('githubToken').value){githubToken=token;$('githubToken').value=token;connected();}
+}).catch(()=>notice('No se pudo recuperar el token guardado; introdúcelo de nuevo.',true));
 $('copyUrl').onclick=async () => { try { await navigator.clipboard.writeText(catalogUrl); notice('Dirección del catálogo copiada.'); } catch (_) { notice('Dirección: ' + catalogUrl); } };
 $('search').oninput=render;
 $('refresh').onclick=async () => { try { setBusy(true); await loadCatalog(); notice('Biblioteca actualizada.'); } catch(e) { notice('No se pudo cargar el catálogo: ' + e.message,true); } finally {setBusy(false);} };
