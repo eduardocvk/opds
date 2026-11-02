@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:20:27Z</updated>
+<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:20:33Z</updated>
 <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://eduardocvk.github.io/opds/catalog.xml"/>
 <entry><id>urn:drive:1eyi9VDvwtatdwIE337Bivk2X4dDSglPT</id><title>Ayuso. Zancadillas, intrigas y venganzas en la Corte de Madrid</title><updated>2026-11-02T17:57:55Z</updated><author><name>David Fernández</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1eyi9VDvwtatdwIE337Bivk2X4dDSglPT&amp;export=download" length="6031800"/></entry>
 <entry><id>urn:drive:1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o</id><title>Bucle</title><updated>2026-11-02T18:25:02Z</updated><author><name>Pereda Herrera, Marcos</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o&amp;export=download" length="1274953"/></entry>
@@ -15,4 +15,5 @@
 <entry><id>urn:drive:1BW8axUW779R6WO9Jh-O0195nB58C6ypT</id><title>El hijo del oligarca</title><updated>2026-11-02T19:20:16Z</updated><author><name>Patrick Radden Keefe</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1BW8axUW779R6WO9Jh-O0195nB58C6ypT&amp;export=download" length="890438"/></entry>
 <entry><id>urn:drive:1FiAncSBgPcQCxqc5N7_r0CEvZFUiJMRc</id><title>El hombre que cayó a la Tierra</title><updated>2026-11-02T19:20:22Z</updated><author><name>Walter Tevis</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1FiAncSBgPcQCxqc5N7_r0CEvZFUiJMRc&amp;export=download" length="269144"/></entry>
 <entry><id>urn:drive:1alE33ENHZy8E_cokSLx-RAsw5ab1GXVn</id><title>El librero de gaza</title><updated>2026-11-02T19:20:27Z</updated><author><name>Rachid Benzine</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1alE33ENHZy8E_cokSLx-RAsw5ab1GXVn&amp;export=download" length="1088885"/></entry>
+<entry><id>urn:drive:1UMS6IOD0Tmmsdi7IY14kCfiUcyMZE4xg</id><title>EL LIBRO MOEBIUS</title><updated>2026-11-02T19:20:32Z</updated><author><name>Catherine Lacey</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1UMS6IOD0Tmmsdi7IY14kCfiUcyMZE4xg&amp;export=download" length="213936"/></entry>
 </feed>
