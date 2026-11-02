@@ -1,7 +1,6 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const api = 'https://api.github.com/repos/eduardocvk/opds/contents/catalog.xml';
-const catalogUrl = 'https://eduardocvk.github.io/opds/catalog.xml';
 const atom = 'http://www.w3.org/2005/Atom';
 const acquire = 'http://opds-spec.org/acquisition';
 let githubToken = '', driveToken = '', driveExpiresAt = 0, catalog = null, busy = false, editingId = null;
@@ -80,7 +79,7 @@ function render() {
     if (!catalog) return;
     const all=entries(catalog.doc).map(bookData), ids=new Set(all.map(b=>b.id));
     for(const id of selectedIds) if(!ids.has(id)) selectedIds.delete(id);
-    const filtered=visibleBooks(); $('bookCount').textContent=all.length; $('countPill').textContent=all.length; $('navCount').textContent=all.length;
+    const filtered=visibleBooks(); $('countPill').textContent=all.length; $('navCount').textContent=all.length;
     const container=$('bookList'); container.replaceChildren();
     if (!filtered.length) { const e=document.createElement('div'); e.className='empty'; e.textContent=$('search').value.trim() ? 'No hay libros que coincidan con tu búsqueda.' : 'No hay libros en el catálogo.'; container.append(e); updateSelection(); return; }
     for (const b of filtered) {
@@ -138,7 +137,6 @@ const startupCredentialsRevision=credentialsRevision;
 loadGithubToken().then(token=>{
     if(credentialsRevision===startupCredentialsRevision && token && !githubToken && !$('githubToken').value){githubToken=token;$('githubToken').value=token;connected();}
 }).catch(()=>notice('No se pudo recuperar el token guardado; introdúcelo de nuevo.',true));
-$('copyUrl').onclick=async () => { try { await navigator.clipboard.writeText(catalogUrl); notice('Dirección del catálogo copiada.'); } catch (_) { notice('Dirección: ' + catalogUrl); } };
 $('search').oninput=render;
 $('refresh').onclick=async () => { try { setBusy(true); await loadCatalog(); notice('Biblioteca actualizada.'); } catch(e) { notice('No se pudo cargar el catálogo: ' + e.message,true); } finally {setBusy(false);} };
 function openEdit(book) { if (!requireGithub()) return; editingId=book.id; $('editTitle').value=book.title; $('editAuthor').value=book.author; $('editDialog').showModal(); }
