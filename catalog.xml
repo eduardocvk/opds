@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:12:30Z</updated>
+<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T19:12:35Z</updated>
 <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://eduardocvk.github.io/opds/catalog.xml"/>
 <entry><id>urn:drive:1eyi9VDvwtatdwIE337Bivk2X4dDSglPT</id><title>Ayuso. Zancadillas, intrigas y venganzas en la Corte de Madrid</title><updated>2026-11-02T17:57:55Z</updated><author><name>David Fernández</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1eyi9VDvwtatdwIE337Bivk2X4dDSglPT&amp;export=download" length="6031800"/></entry>
 <entry><id>urn:drive:1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o</id><title>Bucle</title><updated>2026-11-02T18:25:02Z</updated><author><name>Pereda Herrera, Marcos</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1K3xIkt_oH2I28c8s81pdy3fwhC8k8h7o&amp;export=download" length="1274953"/></entry>
@@ -9,4 +9,5 @@
 <entry><id>urn:drive:12PPAPsx-MIkhSi3w6UoHMpzpMQjOIUDt</id><title>Contenta</title><updated>2026-11-02T18:25:13Z</updated><author><name>Santiago Lorenzo</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=12PPAPsx-MIkhSi3w6UoHMpzpMQjOIUDt&amp;export=download" length="2921518"/></entry>
 <entry><id>urn:drive:1cDPYveuDm_0frejEtYKKSrVBM09RpZHa</id><title>Cosamala</title><updated>2026-11-02T18:25:18Z</updated><author><name>Alana S. Portero</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1cDPYveuDm_0frejEtYKKSrVBM09RpZHa&amp;export=download" length="433006"/></entry>
 <entry><id>urn:drive:1Bsy0RXKTStdXmQzRjGxAzFEazq5KLV2b</id><title>Donantes De Sueño</title><updated>2026-11-02T19:12:30Z</updated><author><name>Karen Russell</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1Bsy0RXKTStdXmQzRjGxAzFEazq5KLV2b&amp;export=download" length="256808"/></entry>
+<entry><id>urn:drive:19BN_LFqkHmRb96Mi7jVz5-EGtRJkwNmQ</id><title>Edén</title><updated>2026-11-02T19:12:35Z</updated><author><name>Stanislaw Lem</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=19BN_LFqkHmRb96Mi7jVz5-EGtRJkwNmQ&amp;export=download" length="1540397"/></entry>
 </feed>
