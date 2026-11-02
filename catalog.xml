@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>urn:opds:cloud-library</id>
-  <title>Mi biblioteca</title>
-  <updated>2026-11-02T00:00:00Z</updated>
-  <link rel="self" href="https://eduardocvk.github.io/opds/catalog.xml" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-02T17:57:56Z</updated>
+<link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://eduardocvk.github.io/opds/catalog.xml"/>
+<entry><id>urn:drive:1eyi9VDvwtatdwIE337Bivk2X4dDSglPT</id><title>Ayuso. Zancadillas, intrigas y venganzas en la Corte de Madrid</title><updated>2026-11-02T17:57:55Z</updated><author><name>David Fernández</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1eyi9VDvwtatdwIE337Bivk2X4dDSglPT&amp;export=download" length="6031800"/></entry>
 </feed>
