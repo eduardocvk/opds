@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-07T10:29:34Z</updated>
+<id>urn:opds:cloud-library</id><title>Mi biblioteca</title><updated>2026-11-17T13:19:10.825Z</updated>
 <link rel="self" type="application/atom+xml;profile=opds-catalog;kind=acquisition" href="https://eduardocvk.github.io/opds/catalog.xml"/>
 <entry><id>urn:drive:1pIJ-wDaYdsC58QmbESIr5sNNnm9rQGKB</id><title>Aniquilación</title><updated>2026-11-07T10:29:29Z</updated><author><name>Michel Houellebecq</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1pIJ-wDaYdsC58QmbESIr5sNNnm9rQGKB&amp;export=download" length="1486870"/></entry>
 <entry><id>urn:drive:1eyi9VDvwtatdwIE337Bivk2X4dDSglPT</id><title>Ayuso. Zancadillas, intrigas y venganzas en la Corte de Madrid</title><updated>2026-11-02T17:57:55Z</updated><author><name>David Fernández</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1eyi9VDvwtatdwIE337Bivk2X4dDSglPT&amp;export=download" length="6031800"/></entry>
@@ -37,4 +37,4 @@
 <entry><id>urn:drive:1I2A5Ku_nyfIHT8a_3VXjOLFXB3ch4IE4</id><title>Un regalo de los dioses</title><updated>2026-11-02T19:22:08Z</updated><author><name>Nazareth Castellanos y Antonio Basanta</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1I2A5Ku_nyfIHT8a_3VXjOLFXB3ch4IE4&amp;export=download" length="478602"/></entry>
 <entry><id>urn:drive:10drs1IeMx2QP7NwPFRTuK7vfBZZQkymg</id><title>Yo que nunca supe de los hombres</title><updated>2026-11-02T19:22:14Z</updated><author><name>Jacqueline Harpman</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=10drs1IeMx2QP7NwPFRTuK7vfBZZQkymg&amp;export=download" length="316829"/></entry>
 <entry><id>urn:drive:1HxW6vG4u7HLSGx5qBe1YxPr-CYxJJOLW</id><title>¿Dónde están los adultos?</title><updated>2026-11-02T19:22:19Z</updated><author><name>Nina Lykke</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1HxW6vG4u7HLSGx5qBe1YxPr-CYxJJOLW&amp;export=download" length="767703"/></entry>
-</feed>
+<entry><id>urn:drive:1ZegkY-q4VSMk1AqVjQs8GsiYTTLzi6vl</id><title>Egan, Greg - Capullo</title><updated>2026-11-17T13:19:10.825Z</updated><author><name>juan</name></author><link rel="http://opds-spec.org/acquisition" type="application/epub+zip" href="https://drive.google.com/uc?id=1ZegkY-q4VSMk1AqVjQs8GsiYTTLzi6vl&amp;export=download" length="216640"/></entry></feed>
